@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q LIFT – Thang máy gia đình cá nhân hoá | Hà Nội &amp; miền Bắc</title>
+<meta name="description" content="Q LIFT – Thiết kế giải pháp thang máy cá nhân hoá cho riêng ngôi nhà của bạn. 10 năm kinh nghiệm, khảo sát & tư vấn miễn phí tận công trình tại Hà Nội & miền Bắc. Hotline 097 891 62 52.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E5A9C; --deep:#0A3566; --cyan:#12A3DF; --ink:#14202E; --muted:#6B7785;
+  --soft:#F2F5F9; --line:#E2E8F0; --white:#fff;
+  --night:#061F3E;
+  --r-lg:24px; --r-md:16px; --r-sm:12px;
+  --shadow:0 1px 2px rgba(10,53,102,.06),0 8px 24px rgba(10,53,102,.08);
+  --shadow-lg:0 2px 4px rgba(10,53,102,.06),0 24px 48px rgba(10,53,102,.16);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --wrap:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15.5px;border:0;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;white-space:nowrap}
+.btn svg.i{width:20px;height:20px}
+.btn-cyan{background:linear-gradient(135deg,#19B4F0,var(--cyan) 55%,#0C8CC4);color:#fff;box-shadow:0 8px 24px rgba(18,163,223,.35)}
+.btn-cyan:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(18,163,223,.45)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--deep);transform:translateY(-2px)}
+
+/* ===== Header ===== */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(6,31,62,.78);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s}
+.hdr.scrolled{background:rgba(6,31,62,.94)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo img{height:30px;width:auto}
+.nav{display:none;gap:28px;font-size:14.5px;color:rgba(255,255,255,.78)}
+.nav a{position:relative;padding:6px 0;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover{color:#fff}.nav a:hover::after{transform:scaleX(1)}
+.hdr-call{height:40px;padding:0 16px;font-size:14px;gap:8px}
+.hdr-call .num{display:none}
+
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(900px 500px at 85% 10%,rgba(18,163,223,.28),transparent 60%),
+  radial-gradient(700px 500px at 0% 100%,rgba(14,90,156,.55),transparent 60%),
+  linear-gradient(160deg,var(--night) 0%,var(--deep) 45%,var(--navy) 100%);
+  margin-top:-64px;padding-top:64px}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;gap:36px;padding-top:40px;padding-bottom:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9FDCF6;padding:7px 14px;border-radius:999px;background:rgba(18,163,223,.12);border:1px solid rgba(18,163,223,.3)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(18,163,223,.25)}
+.hero h1{font-size:clamp(31px,8.4vw,60px);line-height:1.18;font-weight:800;letter-spacing:-.02em;margin:18px 0 16px}
+.grad-text{background:linear-gradient(90deg,#7FD6FA,#12A3DF 60%,#5BC4F0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:16.5px;color:rgba(255,255,255,.78);max-width:540px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-cta .btn{flex:1 1 220px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:30px}
+.stat{padding:14px 16px;border-radius:var(--r-md);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.stat b{display:block;font-size:26px;font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.stat b small{font-size:14px;font-weight:600;margin-left:2px;color:#9FDCF6}
+.stat span{font-size:13px;color:rgba(255,255,255,.66)}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center;padding:10px 0 6px}
+.hero-visual .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(18,163,223,.45),rgba(18,163,223,0) 65%);filter:blur(10px)}
+.cabin-frame{position:relative;width:min(58vw,280px);border-radius:22px;padding:10px;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.45);animation:float 7s ease-in-out infinite}
+.cabin-frame img{border-radius:14px;aspect-ratio:579/1100;object-fit:cover;width:100%}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:var(--shadow-lg);font-size:12.5px;line-height:1.3;max-width:250px}
+.chip svg.i{color:var(--navy);width:28px;height:28px;padding:5px;border-radius:9px;background:#E6F5FC}
+.chip b{display:block;font-size:14px}
+.chip-1{left:0;top:16%}
+.chip-2{right:0;bottom:14%}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-bar{position:relative;border-top:1px solid rgba(255,255,255,.1);background:rgba(3,18,38,.35)}
+.hero-bar .wrap{display:grid;grid-template-columns:1fr;gap:12px;padding-top:18px;padding-bottom:18px}
+.hb{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.8)}
+.hb svg.i{color:var(--cyan)}
+.hb b{color:#fff;font-weight:600}
+
+/* ===== Sections ===== */
+section{position:relative}
+.sec{padding:72px 0}
+.sec-soft{background:var(--soft)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.kicker::before{content:"";width:24px;height:2px;background:currentColor;border-radius:2px}
+.h2{font-size:clamp(26px,6.4vw,42px);line-height:1.22;font-weight:800;letter-spacing:-.02em;margin:12px 0 14px;color:var(--deep)}
+.sub{color:var(--muted);font-size:16px;max-width:640px}
+.sec-head{margin-bottom:34px}
+.center{text-align:center}.center .sub{margin:0 auto}
+
+/* Intro */
+.intro-grid{display:grid;gap:28px}
+.intro-copy p{color:#3A4757;margin-bottom:14px}
+.big10{display:flex;align-items:center;gap:18px;padding:22px;border-radius:var(--r-lg);background:linear-gradient(135deg,var(--deep),var(--navy));color:#fff;box-shadow:var(--shadow-lg);margin-top:8px;overflow:hidden;position:relative}
+.big10::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(18,163,223,.5),transparent 70%)}
+.big10 .n{font-size:64px;font-weight:800;line-height:1;letter-spacing:-.04em;background:linear-gradient(180deg,#fff,#9FDCF6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.big10 .t b{display:block;font-size:18px}
+.big10 .t span{font-size:14px;color:rgba(255,255,255,.72)}
+.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.who span{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--deep)}
+.who svg.i{width:16px;height:16px;color:var(--cyan)}
+.values{display:grid;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#CFE3F3}
+.ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#E6F5FC,#D3ECF9);color:var(--navy);margin-bottom:16px}
+.ic svg.i{width:24px;height:24px}
+.card h3{font-size:19px;font-weight:700;color:var(--deep);margin-bottom:6px}
+.card p{font-size:15px;color:var(--muted)}
+.val-num{float:right;font-size:13px;font-weight:700;color:#B8C6D6;letter-spacing:.06em}
+
+/* Tech bento */
+.tech{background:linear-gradient(180deg,#fff 0%,var(--soft) 100%)}
+.bento{display:grid;gap:14px;grid-template-columns:1fr}
+.bx{position:relative;overflow:hidden;border-radius:var(--r-lg);padding:24px;background:#fff;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.bx:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.bx h3{font-size:19px;line-height:1.35;font-weight:700;color:var(--deep);margin-bottom:8px}
+.bx p{font-size:14.5px;color:var(--muted)}
+.bx .pct{display:inline-flex;align-items:baseline;gap:6px;margin:6px 0 10px;font-weight:800;color:var(--navy)}
+.bx .pct b{font-size:44px;line-height:1;letter-spacing:-.03em;background:linear-gradient(135deg,var(--navy),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bx .pct span{font-size:13.5px;font-weight:600;color:var(--muted)}
+.bx .media{margin:16px -6px -6px;border-radius:14px;background:#fff;display:flex;justify-content:center}
+.bx-dark{background:linear-gradient(150deg,var(--deep),var(--navy) 70%,#1478B8);color:#fff;border:0}
+.bx-dark h3{color:#fff}.bx-dark p{color:rgba(255,255,255,.75)}
+.bx-dark .ic{background:rgba(255,255,255,.12);color:#9FDCF6}
+.bx-dark::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(18,163,223,.45),transparent 70%)}
+.bx-cab{display:grid;grid-template-columns:1fr 90px;gap:14px;align-items:end}
+.bx-cab img{height:180px;width:auto;object-fit:contain;justify-self:end}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.bx-dark .tag{color:#9FDCF6}
+.note{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+/* Cabins */
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px;margin:0 -20px 26px;padding-left:20px;padding-right:20px;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:14.5px;font-weight:600;color:#3A4757;cursor:pointer;transition:all .25s var(--ease)}
+.tab small{font-weight:600;color:var(--muted);margin-left:4px}
+.tab:hover{border-color:var(--cyan);color:var(--navy)}
+.tab.on{background:var(--deep);border-color:var(--deep);color:#fff;box-shadow:0 6px 18px rgba(10,53,102,.25)}
+.tab.on small{color:#9FDCF6}
+.cabins{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cab{position:relative;display:flex;flex-direction:column;border-radius:var(--r-md);overflow:hidden;background:#fff;border:1px solid var(--line);transition:transform .35s var(--ease),box-shadow .35s var(--ease),opacity .3s}
+.cab:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cab .ph{position:relative;background:#0b1522;overflow:hidden}
+.cab .ph img{width:100%;aspect-ratio:579/1100;object-fit:cover;transition:transform .6s var(--ease)}
+.cab:hover .ph img{transform:scale(1.04)}
+.cab .code{position:absolute;left:10px;top:10px;font-size:13px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--deep)}
+.cab .grp{position:absolute;left:10px;bottom:10px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:999px;background:rgba(10,53,102,.75);color:#fff;backdrop-filter:blur(4px)}
+.cab .bd{padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cab .bd p{font-size:13px;line-height:1.5;color:#4A5665;flex:1}
+.cab .ask{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--navy)}
+.cab .ask svg.i{width:16px;height:16px;transition:transform .25s}
+.cab:hover .ask svg.i{transform:translateX(3px)}
+.cab.hide{display:none}
+
+/* Accessories */
+.acc{display:grid;gap:14px;grid-template-columns:1fr}
+.ac{border-radius:var(--r-lg);background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.ac:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.ac .ph{background:#fff;height:300px;display:flex;align-items:center;justify-content:center;padding:14px;border-bottom:1px solid var(--line)}
+.ac .ph img{height:100%;width:auto;max-width:100%;object-fit:contain}
+.ac .bd{padding:18px 20px 20px}
+.ac h3{font-size:17px;font-weight:700;color:var(--deep);margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ac h3 em{font-style:normal;font-size:12px;font-weight:700;color:var(--cyan);background:#E6F5FC;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.ac p{font-size:14px;color:var(--muted)}
+.ac-wide{display:grid}
+.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.mini div{padding:12px;border-radius:12px;background:var(--soft);font-size:13.5px;font-weight:600;color:var(--deep);display:flex;gap:8px;align-items:center}
+.mini svg.i{width:18px;height:18px;color:var(--cyan)}
+.swatch{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13.5px;color:#3A4757}
+.swatch i{width:34px;height:34px;border-radius:9px;background:#454A4F;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+
+/* Specs */
+.spec-wrap{margin-top:48px}
+.spec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px;margin-bottom:16px}
+.spec-head h3{font-size:22px;font-weight:800;color:var(--deep)}
+.hint{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.hint svg.i{width:16px;height:16px}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r-md);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{padding:12px 14px;text-align:left;white-space:nowrap}
+thead th{background:var(--deep);color:#fff;font-weight:600;font-size:13px;position:sticky;top:0}
+thead th small{display:block;font-weight:400;color:#9FDCF6;font-size:11.5px}
+tbody tr{border-top:1px solid var(--line);transition:background .2s}
+tbody tr:hover{background:#F5FAFE}
+tbody td:first-child{font-weight:700;color:var(--deep);position:sticky;left:0;background:inherit}
+tbody tr{background:#fff}
+tbody tr:nth-child(even){background:#FAFCFE}
+.grp-row td{background:var(--soft)!important;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)!important}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:#E6F5FC;color:var(--navy);font-weight:600}
+.spec-note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* Warranty */
+.warr{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(700px 400px at 100% 0%,rgba(18,163,223,.3),transparent 60%),
+  linear-gradient(165deg,var(--night),var(--deep) 60%,#0C4C88)}
+.warr .h2{color:#fff}.warr .sub{color:rgba(255,255,255,.72)}
+.warr .kicker{color:#7FD6FA}
+.w-bento{display:grid;gap:14px;grid-template-columns:1fr}
+.wb{position:relative;border-radius:var(--r-lg);padding:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:transform .35s var(--ease),background .35s,border-color .35s;overflow:hidden}
+.wb:hover{transform:translateY(-4px);background:rgba(255,255,255,.1);border-color:rgba(18,163,223,.5)}
+.wb .ic{background:rgba(18,163,223,.16);color:#7FD6FA}
+.wb h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.wb p{font-size:14.5px;color:rgba(255,255,255,.7)}
+.wb-main{background:linear-gradient(140deg,rgba(18,163,223,.22),rgba(255,255,255,.04));}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.trio div{text-align:center;padding:16px 6px;border-radius:16px;background:rgba(3,18,38,.35);border:1px solid rgba(255,255,255,.1)}
+.trio b{display:block;font-size:40px;font-weight:800;line-height:1;letter-spacing:-.03em;background:linear-gradient(180deg,#fff,#7FD6FA);-webkit-background-clip:text;background-clip:text;color:transparent}
+.trio b small{font-size:14px;letter-spacing:0;margin-left:3px;-webkit-text-fill-color:#9FDCF6}
+.trio span{display:block;margin-top:8px;font-size:13px;color:rgba(255,255,255,.75)}
+.steps{display:grid;gap:10px;margin-top:6px;counter-reset:st}
+.step{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:rgba(255,255,255,.82)}
+.step::before{counter-increment:st;content:counter(st,decimal-leading-zero);flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12.5px;font-weight:700;background:rgba(18,163,223,.18);color:#9FDCF6}
+.step b{color:#fff;display:block;font-weight:600}
+
+/* Form */
+.reg{background:var(--soft)}
+.reg-grid{display:grid;gap:28px;align-items:start}
+.reg-side .list{display:grid;gap:14px;margin-top:22px}
+.reg-side .li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#3A4757}
+.reg-side .li svg.i{color:#fff;background:linear-gradient(135deg,var(--navy),var(--cyan));border-radius:10px;padding:6px;width:32px;height:32px}
+.reg-side .li b{display:block;color:var(--deep)}
+.callbox{display:flex;align-items:center;gap:14px;margin-top:24px;padding:18px;border-radius:var(--r-md);background:#fff;border:1px solid var(--line)}
+.callbox .ic{margin:0}
+.callbox span{font-size:13px;color:var(--muted)}
+.callbox a{display:block;font-size:22px;font-weight:800;color:var(--navy);letter-spacing:.01em}
+.form{background:#fff;border-radius:var(--r-lg);padding:24px 20px;box-shadow:var(--shadow-lg);border:1px solid var(--line);position:relative;overflow:hidden}
+.form::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--deep),var(--navy),var(--cyan))}
+.form h3{font-size:21px;font-weight:800;color:var(--deep)}
+.form .fsub{font-size:14px;color:var(--muted);margin:4px 0 18px}
+.fg{margin-bottom:14px}
+.fg label,.fg .lb{display:block;font-size:13.5px;font-weight:600;color:#2A3646;margin-bottom:6px}
+.fg label i{font-style:normal;color:#D14343}
+.inp{width:100%;height:50px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);background:#FBFCFE;font-size:16px;transition:border-color .2s,box-shadow .2s,background .2s}
+textarea.inp{height:96px;padding:12px 14px;resize:vertical}
+.inp:focus{outline:0;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 4px rgba(18,163,223,.15)}
+.fg.err .inp{border-color:#D14343;box-shadow:0 0 0 4px rgba(209,67,67,.1)}
+.msg{display:none;font-size:12.5px;color:#D14343;margin-top:6px}
+.fg.err .msg{display:block}
+.opts{display:grid;grid-template-columns:1fr;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:#FBFCFE;font-size:14.5px;cursor:pointer;transition:all .2s}
+.opt span::before{content:"";width:18px;height:18px;border-radius:50%;border:2px solid #B8C6D6;flex:none;transition:all .2s}
+.opt input:checked+span{border-color:var(--cyan);background:#F0FAFE;color:var(--deep);font-weight:600}
+.opt input:checked+span::before{border-color:var(--cyan);background:radial-gradient(circle,var(--cyan) 45%,transparent 50%)}
+.opt input:focus-visible+span{box-shadow:0 0 0 4px rgba(18,163,223,.2)}
+.form .btn{width:100%;margin-top:6px;height:54px;font-size:16px}
+.privacy{font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center}
+.thanks{display:none;text-align:center;padding:30px 6px}
+.thanks .ok{width:68px;height:68px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--navy),var(--cyan));color:#fff;box-shadow:0 12px 30px rgba(18,163,223,.35)}
+.thanks .ok svg.i{width:32px;height:32px;stroke-width:2.4}
+.thanks h3{margin-bottom:8px}
+.thanks p{color:var(--muted);font-size:15px}
+.form.done form{display:none}.form.done .thanks{display:block;animation:pop .5s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* Footer */
+.ftr{background:var(--night);color:rgba(255,255,255,.7);padding:48px 0 110px;font-size:14px}
+.ftr .wrap{display:grid;gap:28px}
+.ftr .logo img{height:36px}
+.ftr .pos{margin-top:12px;max-width:340px}
+.ftr h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:12px;letter-spacing:.02em}
+.ftr ul{list-style:none;display:grid;gap:9px}
+.ftr li{display:flex;gap:10px;align-items:flex-start}
+.ftr li svg.i{width:18px;height:18px;color:var(--cyan);margin-top:2px}
+.ftr a:hover{color:#fff}
+.ph-hold{color:rgba(255,255,255,.45);font-style:italic}
+.copy{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:12.5px;color:rgba(255,255,255,.45);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.slogan{letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#7FD6FA;font-size:12px}
+
+/* Mobile sticky bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(10,53,102,.1)}
+.mbar a{height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px}
+.mbar .call{background:linear-gradient(135deg,var(--navy),var(--cyan));color:#fff}
+.mbar .zalo{background:#E6F5FC;color:var(--navy);border:1px solid #CBE8F7}
+.mbar svg.i{width:20px;height:20px}
+.mbar .call svg.i{animation:ring 2.4s ease-in-out infinite}
+@keyframes ring{0%,60%,100%{transform:rotate(0)}65%{transform:rotate(-14deg)}75%{transform:rotate(12deg)}85%{transform:rotate(-8deg)}}
+
+/* Reveal */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ===== Breakpoints ===== */
+@media (min-width:560px){
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .cabins{grid-template-columns:repeat(3,1fr);gap:16px}
+  .acc{grid-template-columns:repeat(2,1fr)}
+  .opts{grid-template-columns:repeat(3,1fr)}
+  .hero-bar .wrap{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:768px){
+  .wrap{padding:0 32px}
+  .sec{padding:96px 0}
+  .tabs{margin:0 0 30px;padding:4px;flex-wrap:wrap}
+  .values{grid-template-columns:repeat(3,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .w-bento{grid-template-columns:repeat(2,1fr)}
+  .form{padding:32px}
+  .ftr .wrap{grid-template-columns:1.4fr 1fr 1fr}
+  .ftr .copy{grid-column:1/-1}
+}
+@media (min-width:1024px){
+  .nav{display:flex}
+  .hdr-call .num{display:inline}
+  .hdr .wrap{height:72px}
+  .hero{margin-top:-72px;padding-top:72px}
+  .logo img{height:34px}
+  .hero .wrap{grid-template-columns:1.12fr .88fr;align-items:center;padding-top:64px;padding-bottom:72px;gap:40px}
+  .hero-cta .btn{flex:0 0 auto}
+  .cabin-frame{width:310px}
+  .chip-1{left:-6px}.chip-2{right:-6px}
+  .intro-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(0,auto)}
+  .b-motor{grid-column:span 4;grid-row:span 2;display:flex;flex-direction:column}
+  .b-motor .media{margin-top:auto}
+  .b-door{grid-column:span 2}
+  .b-cab{grid-column:span 2}
+  .b-green{grid-column:span 2}
+  .b-core{grid-column:span 2}
+  .b-fit{grid-column:span 2}
+  .cabins{grid-template-columns:repeat(6,1fr)}
+  .acc{grid-template-columns:repeat(3,1fr)}
+  .ac-wide{grid-column:span 1}
+  .w-bento{grid-template-columns:repeat(3,1fr)}
+  .wb-main{grid-column:span 2;grid-row:span 2;padding:32px;display:flex;flex-direction:column}
+  .wb-main .trio{margin-top:auto}
+  .wb-main .trio b{font-size:64px}
+  .wb-main .trio div{padding:26px 8px}
+  .reg-grid{grid-template-columns:.9fr 1.1fr;gap:56px}
+  .reg-side{position:sticky;top:110px}
+  .mbar{display:none}
+  .ftr{padding-bottom:40px}
+}
+@media (min-width:1280px){.cabins{gap:18px}}
+</style>
+</head>
+<body>
+
+<!-- Bộ icon nét (SVG inline) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-ear" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/><path d="M9 11h4M11 9v4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.4-7.5-10A4.5 4.5 0 0 1 12 7.3 4.5 4.5 0 0 1 19.5 10c0 5.6-7.5 10-7.5 10Z"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/><path d="m10 9 1.5 1.5L14.5 7.5"/></symbol>
+  <symbol id="i-motor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v2M12 17.5v2M4.5 12h2M17.5 12h2"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M12 3v18"/><path d="m8 12-2 0M16 12h2"/><path d="m7.5 10-1.5 2 1.5 2M16.5 10l1.5 2-1.5 2"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9 7h6M9 10h6M9 13h3"/><circle cx="15" cy="17" r="1"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19c3-4 6-6 9-8"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 17 17 3l4 4L7 21l-4-4Z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L13 18l-3 3-4-4 3-3 6.5-6.5Z"/><path d="M14.5 6.5 17 4l3 3-2.5 2.5"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+  <symbol id="i-swipe" viewBox="0 0 24 24"><path d="M4 12h16M16 8l4 4-4 4M8 8l-4 4 4 4"/></symbol>
+  <symbol id="i-frame" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18"/><path d="M6 9h12M6 15h12M6 3l12 6M6 9l12 6"/></symbol>
+  <symbol id="i-panel" viewBox="0 0 24 24"><rect x="8" y="2.5" width="8" height="19" rx="2"/><circle cx="12" cy="9" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="12" cy="17" r="1"/><path d="M10.5 5.5h3"/></symbol>
+  <symbol id="i-steps" viewBox="0 0 24 24"><path d="M4 20h4v-4h4v-4h4V8h4"/></symbol>
+</svg>
+
+<!-- ===== Header ===== -->
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Q LIFT – về đầu trang"><img src="img/logo-trang.svg" alt="Q LIFT" width="91" height="34"></a>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#cong-nghe">Công nghệ</a>
+      <a href="#mau-cabin">Mẫu cabin</a>
+      <a href="#thong-so">Thông số</a>
+      <a href="#bao-hanh">Bảo hành</a>
+    </nav>
+    <a href="tel:0978916252" class="btn btn-cyan hdr-call" aria-label="Gọi hotline 097 891 62 52"><svg class="i"><use href="#i-phone"/></svg><span>Gọi</span><span class="num">097 891 62 52</span></a>
+  </div>
+</header>
+
+<main id="top">
+<!-- ===== 1. Hero ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow rv"><span class="dot"></span>Thang máy gia đình · Hà Nội &amp; miền Bắc</span>
+      <h1 class="rv d1">Thiết kế giải pháp thang máy <span class="grad-text">cá nhân hoá</span> cho riêng ngôi nhà của bạn</h1>
+      <p class="lead rv d2">Q LIFT khảo sát tận công trình, đề xuất kích thước cabin và giếng thang phù hợp – từ nhà phố xây mới, nhà cải tạo đến chung cư mini, villa, liền kề.</p>
+      <div class="hero-cta rv d3">
+        <a href="tel:0978916252" class="btn btn-cyan"><svg class="i"><use href="#i-phone"/></svg>Gọi 097 891 62 52</a>
+        <a href="#dang-ky" class="btn btn-ghost">Nhận tư vấn miễn phí<svg class="i"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="stats rv d3">
+        <div class="stat"><b>10<small>năm</small></b><span>kinh nghiệm</span></div>
+        <div class="stat"><b>2-5-1</b><span>bảo hành rõ ràng</span></div>
+        <div class="stat"><b>18<small>mẫu</small></b><span>thiết kế cabin</span></div>
+        <div class="stat"><b>Miễn phí</b><span>khảo sát tận nơi</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv d2">
+      <div class="halo"></div>
+      <div class="cabin-frame"><img src="img/cabin/c16.jpg" alt="Mẫu cabin C16 dòng cao cấp – trần acrylic hình ngôi sao, đèn led" width="579" height="1100"></div>
+      <div class="chip chip-1"><svg class="i"><use href="#i-motor"/></svg><div><b>Máy kéo không hộp số</b>Nam châm vĩnh cửu</div></div>
+      <div class="chip chip-2"><svg class="i"><use href="#i-shield"/></svg><div><b>Bảo hành 2-5-1</b>Bảo trì · Động cơ · Linh kiện</div></div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="wrap">
+      <div class="hb"><svg class="i"><use href="#i-phone"/></svg><span>Hotline tư vấn: <b>097 891 62 52</b></span></div>
+      <div class="hb"><svg class="i"><use href="#i-home"/></svg><span>Khảo sát: <b>miễn phí tận công trình</b></span></div>
+      <div class="hb"><svg class="i"><use href="#i-pin"/></svg><span>Khu vực: <b>Hà Nội &amp; miền Bắc</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. Giới thiệu ===== -->
+<section class="sec sec-soft" id="gioi-thieu">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-copy">
+        <span class="kicker rv">Giới thiệu Q LIFT</span>
+        <h2 class="h2 rv d1">Mỗi ngôi nhà một giải pháp thang máy riêng</h2>
+        <p class="rv d1">Suốt 10 năm qua, Q LIFT tư vấn giải pháp phù hợp với từng công trình, lắp đặt, bàn giao và bảo hành thang máy gia đình.</p>
+        <p class="rv d2">Mỗi ngôi nhà có diện tích và kết cấu khác nhau. Chúng tôi tìm hiểu hiện trạng trước, rồi đề xuất kích thước cabin và hố thang phù hợp nhất – kể cả với nhà phố cải tạo có không gian hạn chế.</p>
+        <div class="who rv d2">
+          <span><svg class="i"><use href="#i-home"/></svg>Nhà phố xây mới</span>
+          <span><svg class="i"><use href="#i-tool"/></svg>Nhà cải tạo</span>
+          <span><svg class="i"><use href="#i-building"/></svg>Chung cư mini · villa · liền kề</span>
+        </div>
+      </div>
+      <div>
+        <div class="big10 rv">
+          <div class="n">10</div>
+          <div class="t"><b>năm kinh nghiệm</b><span>Tư vấn – lắp đặt – bàn giao – bảo hành thang máy gia đình</span></div>
+        </div>
+        <div class="values" style="margin-top:14px">
+          <div class="card rv d1"><span class="val-num">01</span><div class="ic"><svg class="i"><use href="#i-ear"/></svg></div><h3>Thấu hiểu</h3><p>Khảo sát hiện trạng, lắng nghe nhu cầu rồi mới đề xuất phương án.</p></div>
+          <div class="card rv d2"><span class="val-num">02</span><div class="ic"><svg class="i"><use href="#i-heart"/></svg></div><h3>Tận tâm</h3><p>Đồng hành từ tư vấn, lắp đặt đến bàn giao và bảo hành.</p></div>
+          <div class="card rv d3"><span class="val-num">03</span><div class="ic"><svg class="i"><use href="#i-award"/></svg></div><h3>Chất lượng</h3><p>Thiết bị chọn từ nhà cung cấp uy tín, bốn hệ thống phần cứng an toàn chính.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Công nghệ ===== -->
+<section class="sec tech" id="cong-nghe">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker rv">Công nghệ</span>
+      <h2 class="h2 rv d1">Vận hành êm, gọn và tiết kiệm điện năng</h2>
+      <p class="sub rv d2">Q LIFT đề cao giá trị tiên tiến của nhà máy Việt Nam – Singapore, lựa chọn thiết bị theo từng công trình.</p>
+    </div>
+    <div class="bento">
+      <article class="bx b-motor rv">
+        <span class="tag">Máy kéo</span>
+        <h3>Động cơ không hộp số đồng bộ nam châm vĩnh cửu</h3>
+        <div class="pct"><b>40%</b><span>tiết kiệm năng lượng hơn*</span></div>
+        <p>Không có cơ chế giảm tốc cơ học, điều khiển trực tiếp bởi động cơ nam châm vĩnh cửu. Kích thước nhỏ gọn, tiết kiệm không gian, mô-men xoắn đầu ra và khả năng tải mạnh mẽ.</p>
+        <div class="media"><img src="img/dong-co.jpg" alt="Máy kéo không hộp số đồng bộ nam châm vĩnh cửu" loading="lazy" width="760" height="260"></div>
+      </article>
+      <article class="bx b-door rv d1">
+        <span class="tag">Cửa cabin</span>
+        <h3>Bộ truyền động cửa cabin</h3>
+        <div class="pct"><b>50%</b><span>tiết kiệm năng lượng hơn**</span></div>
+        <p>Motor đồng bộ nam châm vĩnh cửu, giúp các thiết bị cấu tạo cửa nhỏ gọn hơn.</p>
+        <div class="media"><img src="img/cua-cabin.jpg" alt="Bộ truyền động cửa cabin" loading="lazy" width="460" height="200"></div>
+      </article>
+      <article class="bx b-cab rv d2">
+        <div class="bx-cab">
+          <div>
+            <span class="tag">Điều khiển</span>
+            <h3>Tủ điều khiển thang máy</h3>
+            <p>Hệ thống điều khiển tiên tiến, chức năng phong phú, an toàn, tiết kiệm điện năng, thuận tiện sử dụng và bảo trì.</p>
+          </div>
+          <img src="img/tu-dieu-khien.jpg" alt="Tủ điều khiển thang máy" loading="lazy" width="160" height="390">
+        </div>
+      </article>
+      <article class="bx bx-dark b-green rv">
+        <div class="ic"><svg class="i"><use href="#i-leaf"/></svg></div>
+        <h3>Năng lượng xanh</h3>
+        <p>Chế độ chờ khi không sử dụng và đèn cabin điều khiển độc lập giúp tiết kiệm đáng kể điện năng.</p>
+      </article>
+      <article class="bx b-core rv d1">
+        <div class="ic"><svg class="i"><use href="#i-shield"/></svg></div>
+        <h3>Giá trị công nghệ cốt lõi</h3>
+        <p>Trang bị bốn hệ thống phần cứng an toàn chính. Cấu hình và xuất xứ cụ thể ghi rõ trong báo giá.</p>
+      </article>
+      <article class="bx b-fit rv d2">
+        <div class="ic"><svg class="i"><use href="#i-ruler"/></svg></div>
+        <h3>Thích nghi không gian</h3>
+        <p>Đề xuất kích thước cabin và hố thang phù hợp, kể cả nhà phố cải tạo có không gian hạn chế.</p>
+      </article>
+    </div>
+    <p class="note">* So với máy kéo truyền thống. ** So với cổng AC truyền thống. Số liệu theo Catalogue thang máy gia đình Q LIFT 2026.</p>
+  </div>
+</section>
+
+<!-- ===== 4. Mẫu cabin ===== -->
+<section class="sec sec-soft" id="mau-cabin">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker rv">Thiết kế cabin</span>
+      <h2 class="h2 rv d1">18 mẫu cabin cho mọi phong cách nhà</h2>
+      <p class="sub rv d2">Chọn nhóm để lọc. Bấm “Tư vấn mẫu này” để Q LIFT gửi thông tin chi tiết và báo giá theo công trình của bạn.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Lọc mẫu cabin">
+      <button class="tab on" role="tab" aria-selected="true" data-f="all">Tất cả<small>18</small></button>
+      <button class="tab" role="tab" aria-selected="false" data-f="tc">Tiêu chuẩn<small>10</small></button>
+      <button class="tab" role="tab" aria-selected="false" data-f="hv">Hoa văn<small>4</small></button>
+      <button class="tab" role="tab" aria-selected="false" data-f="cc">Cao cấp<small>2</small></button>
+      <button class="tab" role="tab" aria-selected="false" data-f="qs">Quan sát (kính)<small>2</small></button>
+    </div>
+    <div class="cabins" id="cabins"></div>
+  </div>
+</section>
+
+<!-- ===== 5. Phụ kiện & thông số ===== -->
+<section class="sec" id="phu-kien">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker rv">Phụ kiện &amp; kết cấu</span>
+      <h2 class="h2 rv d1">Tuỳ chọn từng chi tiết</h2>
+      <p class="sub rv d2">Bảng điều khiển, trần, cửa tầng, vật liệu vách và kết cấu giếng thang – phối hợp theo phong cách ngôi nhà.</p>
+    </div>
+    <div class="acc">
+      <article class="ac rv">
+        <div class="ph"><img src="img/bang-dieu-khien.jpg" alt="Các mẫu bảng điều khiển cabin" loading="lazy" width="820" height="1100"></div>
+        <div class="bd"><h3>Bảng điều khiển cabin <em>8 mẫu</em></h3><p>H001A, H008, H011, H012, H013, H019, H025, H026 – đặt âm vào đố cabin hoặc vách hông.</p></div>
+      </article>
+      <article class="ac rv d1">
+        <div class="ph"><img src="img/tran-cabin.jpg" alt="Các mẫu trần cabin L01 đến L08" loading="lazy" width="860" height="1000"></div>
+        <div class="bd"><h3>Trần cabin <em>L01–L08</em></h3><p>Khung hợp kim nhôm, tấm acrylic mờ, inox, đèn led trang trí; có mẫu trần hình ngôi sao.</p></div>
+      </article>
+      <article class="ac rv d2">
+        <div class="ph"><img src="img/cua-tang.jpg" alt="Các mẫu cửa tầng" loading="lazy" width="720" height="1150"></div>
+        <div class="bd"><h3>Cửa tầng <em>12 lựa chọn</em></h3><p>Thép vân gỗ, inox xước sọc nhuyễn, inox gương vàng / đồng, thép hoa văn FS-803, FS-807, FS-809.</p></div>
+      </article>
+      <article class="ac rv">
+        <div class="ph"><img src="img/vat-lieu.jpg" alt="Bảng vật liệu trần và vách cabin" loading="lazy" width="720" height="1110"></div>
+        <div class="bd"><h3>Vật liệu trần &amp; vách <em>18 mẫu</em></h3><p>Thép vân gỗ, inox gương, inox màu vàng champagne / đồng / đen titan, inox hoa văn và màu sàn.</p></div>
+      </article>
+      <article class="ac ac-wide rv d1">
+        <div class="ph" style="background:var(--soft)">
+          <svg viewBox="0 0 240 170" width="240" height="170" role="img" aria-label="Minh hoạ cửa mở trung tâm và cửa mở lùa 1 phía" style="max-width:100%;height:auto">
+            <g fill="none" stroke="#0A3566" stroke-width="2">
+              <rect x="20" y="20" width="80" height="130" rx="3" fill="#fff"/><rect x="30" y="30" width="28" height="120" fill="#C9B8A6" stroke="none"/><rect x="62" y="30" width="28" height="120" fill="#C9B8A6" stroke="none"/>
+              <path d="M52 90h-12m4-4-4 4 4 4M68 90h12m-4-4 4 4-4 4" stroke="#12A3DF"/>
+              <rect x="140" y="20" width="80" height="130" rx="3" fill="#fff"/><rect x="150" y="30" width="22" height="120" fill="#C9B8A6" stroke="none"/><rect x="174" y="30" width="22" height="120" fill="#B3A08C" stroke="none"/>
+              <path d="M206 90h-12m4-4-4 4 4 4" stroke="#12A3DF"/>
+            </g>
+          </svg>
+        </div>
+        <div class="bd"><h3>Loại cửa &amp; khung cửa</h3>
+          <div class="mini">
+            <div><svg class="i"><use href="#i-door"/></svg>Mở trung tâm</div>
+            <div><svg class="i"><use href="#i-swipe"/></svg>Mở lùa 1 phía</div>
+            <div><svg class="i"><use href="#i-frame"/></svg>Bao che bản hẹp</div>
+            <div><svg class="i"><use href="#i-frame"/></svg>Bao che bản rộng</div>
+          </div>
+        </div>
+      </article>
+      <article class="ac rv d2">
+        <div class="ph"><img src="img/khung-thep.jpg" alt="Kết cấu khung thép hố thang" loading="lazy" width="320" height="1130"></div>
+        <div class="bd"><h3>Kết cấu khung thép</h3><p>Khung hố thang tuỳ chỉnh theo nhu cầu, kết cấu uốn tấm thép, lắp ráp trực tiếp tại chỗ, lắp đặt nhanh chóng.</p>
+          <div class="swatch"><i></i>Màu tiêu chuẩn: RAL7031 – Xám Xingfa</div></div>
+      </article>
+    </div>
+
+    <div class="spec-wrap" id="thong-so">
+      <div class="spec-head rv">
+        <div><span class="kicker">Thông số kỹ thuật</span><h3 style="margin-top:8px">Tóm tắt các dòng thang theo catalogue</h3></div>
+        <span class="hint"><svg class="i"><use href="#i-swipe"/></svg>Vuốt ngang để xem đủ cột</span>
+      </div>
+      <div class="tbl rv d1" tabindex="0" role="region" aria-label="Bảng thông số kỹ thuật">
+        <table>
+          <thead>
+            <tr>
+              <th>Dòng</th>
+              <th>Vị trí đối trọng</th>
+              <th>Tải trọng<small>kg</small></th>
+              <th>Tốc độ<small>m/s</small></th>
+              <th>Điểm dừng<small>tối đa</small></th>
+              <th>Hố PIT<small>tối thiểu</small></th>
+              <th>OH – chiều cao TH<small>tối thiểu</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="grp-row"><td colspan="7">Dòng P – tải trọng 450–1000 kg</td></tr>
+            <tr><td>P10</td><td>Phía sau</td><td>450 – 1000</td><td>1 – 1,75</td><td>26</td><td>850 mm</td><td>3450 mm</td></tr>
+            <tr><td>P10</td><td>Bên hông</td><td>450 – 1000</td><td>1 – 1,75</td><td>26</td><td>850 mm</td><td>4200 mm</td></tr>
+            <tr><td>P32</td><td>Bên hông</td><td>450 – 1000</td><td>1 – 1,75</td><td>26</td><td>850 mm</td><td>3450 mm</td></tr>
+            <tr><td>P20</td><td>Bên hông</td><td>450 – 1000</td><td>1 – 1,75</td><td>26</td><td>850 mm</td><td>3300 mm</td></tr>
+            <tr class="grp-row"><td colspan="7">Dòng T – tải trọng 320–630 kg</td></tr>
+            <tr><td>T10</td><td>Phía sau</td><td>320 – 630</td><td>0,5 – 1,75</td><td>18</td><td>450 mm</td><td>2950 mm</td></tr>
+            <tr><td>T10S</td><td>Bên hông</td><td>320 – 630</td><td>0,5 – 1,75</td><td>18</td><td>450 mm</td><td>2950 mm</td></tr>
+            <tr><td>T20</td><td>Bên hông</td><td>320 – 630</td><td>0,5 – 1,75</td><td>18</td><td>200 mm</td><td>2850 mm</td></tr>
+            <tr><td>T20R</td><td>–</td><td>320 – 630</td><td>0,5 – 1,75</td><td>18</td><td>200 – 250 mm</td><td>2850 – 2950 mm</td></tr>
+            <tr class="grp-row"><td colspan="7">Dòng H – homelift tải trọng 200–400 kg</td></tr>
+            <tr><td>H20</td><td>Hông / sau</td><td>200 – 400</td><td>0,4</td><td>5</td><td>250 mm</td><td>2750 mm</td></tr>
+            <tr><td>H26</td><td>Hông / sau</td><td>200 – 400</td><td>0,4</td><td>5</td><td>250 mm</td><td>2750 mm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="spec-note">Kích thước cabin, cửa và giếng thang chi tiết theo từng tải trọng có trong catalogue. Khi kích thước hố thang mặc định chưa đáp ứng thực tế (cửa hông, hai cửa thông nhau, thang quan sát, hố thang kết cấu thép…), Q LIFT sẽ đề xuất phương án bố trí phù hợp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. Bảo hành / cam kết ===== -->
+<section class="sec warr" id="bao-hanh">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker rv">Cam kết của Q LIFT</span>
+      <h2 class="h2 rv d1">Bảo hành rõ ràng, đồng hành trọn quá trình</h2>
+      <p class="sub rv d2">Từ lần khảo sát đầu tiên đến khi bàn giao và bảo hành – một đầu mối duy nhất.</p>
+    </div>
+    <div class="w-bento">
+      <div class="wb wb-main rv">
+        <div class="ic"><svg class="i"><use href="#i-shield"/></svg></div>
+        <h3>Chính sách bảo hành 2-5-1</h3>
+        <p>Ghi rõ từng hạng mục để gia chủ yên tâm sử dụng.</p>
+        <div class="trio">
+          <div><b>2<small> năm</small></b><span>Bảo trì</span></div>
+          <div><b>5<small> năm</small></b><span>Động cơ</span></div>
+          <div><b>1<small> năm</small></b><span>Linh kiện</span></div>
+        </div>
+      </div>
+      <div class="wb rv d1">
+        <div class="ic"><svg class="i"><use href="#i-clip"/></svg></div>
+        <h3>Khảo sát &amp; tư vấn miễn phí</h3>
+        <p>Tìm hiểu hiện trạng công trình, tư vấn vị trí và phương án thang.</p>
+      </div>
+      <div class="wb rv d2">
+        <div class="ic"><svg class="i"><use href="#i-steps"/></svg></div>
+        <h3>Đồng hành trọn quá trình</h3>
+        <div class="steps">
+          <div class="step"><span><b>Tư vấn</b>Khảo sát, chọn phương án</span></div>
+          <div class="step"><span><b>Lắp đặt</b>Thi công tại công trình</span></div>
+          <div class="step"><span><b>Bàn giao &amp; bảo hành</b>Theo chính sách 2-5-1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. Form đăng ký ===== -->
+<section class="sec reg" id="dang-ky">
+  <div class="wrap">
+    <div class="reg-grid">
+      <div class="reg-side">
+        <span class="kicker rv">Đăng ký khảo sát</span>
+        <h2 class="h2 rv d1">Nhận khảo sát &amp; tư vấn miễn phí tận công trình</h2>
+        <p class="sub rv d2">Để lại thông tin, Q LIFT sẽ liên hệ để hẹn lịch khảo sát tại Hà Nội &amp; miền Bắc.</p>
+        <div class="list">
+          <div class="li rv"><svg class="i"><use href="#i-ruler"/></svg><span><b>Đo đạc hiện trạng</b>Đề xuất kích thước cabin, hố PIT và giếng thang phù hợp.</span></div>
+          <div class="li rv d1"><svg class="i"><use href="#i-layers"/></svg><span><b>Gợi ý mẫu cabin &amp; vật liệu</b>Theo phong cách và ngân sách của gia đình.</span></div>
+          <div class="li rv d2"><svg class="i"><use href="#i-clip"/></svg><span><b>Báo giá rõ cấu hình</b>Cấu hình và xuất xứ ghi cụ thể trong báo giá.</span></div>
+        </div>
+        <div class="callbox rv">
+          <div class="ic"><svg class="i"><use href="#i-phone"/></svg></div>
+          <div><span>Cần tư vấn ngay?</span><a href="tel:0978916252">097 891 62 52</a></div>
+        </div>
+      </div>
+
+      <div class="form rv d1" id="formBox">
+        <form id="regForm" novalidate>
+          <h3>Đăng ký khảo sát miễn phí</h3>
+          <p class="fsub">Chỉ mất 30 giây. Thông tin chỉ dùng để Q LIFT liên hệ tư vấn.</p>
+          <div class="fg" id="g-name">
+            <label for="f-name">Họ và tên <i>*</i></label>
+            <input class="inp" id="f-name" name="name" type="text" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn An">
+            <div class="msg">Vui lòng nhập họ tên.</div>
+          </div>
+          <div class="fg" id="g-phone">
+            <label for="f-phone">Số điện thoại <i>*</i></label>
+            <input class="inp" id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Ví dụ: 0912 345 678">
+            <div class="msg">Số điện thoại cần đủ 10 chữ số, bắt đầu bằng 0.</div>
+          </div>
+          <div class="fg" id="g-area">
+            <label for="f-area">Khu vực công trình <i>*</i></label>
+            <select class="inp" id="f-area" name="area">
+              <option value="">Chọn khu vực</option>
+              <option>Hà Nội – nội thành</option>
+              <option>Hà Nội – ngoại thành</option>
+              <option>Tỉnh miền Bắc khác</option>
+            </select>
+            <div class="msg">Vui lòng chọn khu vực.</div>
+          </div>
+          <div class="fg" id="g-type">
+            <span class="lb">Loại công trình <i style="font-style:normal;color:#D14343">*</i></span>
+            <div class="opts" role="radiogroup" aria-label="Loại công trình">
+              <label class="opt"><input type="radio" name="type" value="Xây mới"><span>Nhà xây mới</span></label>
+              <label class="opt"><input type="radio" name="type" value="Cải tạo"><span>Nhà cải tạo</span></label>
+              <label class="opt"><input type="radio" name="type" value="Chung cư mini – villa"><span>Chung cư mini – villa</span></label>
+            </div>
+            <div class="msg">Vui lòng chọn loại công trình.</div>
+          </div>
+          <div class="fg">
+            <label for="f-note">Ghi chú</label>
+            <textarea class="inp" id="f-note" name="note" placeholder="Số tầng, mẫu cabin quan tâm, thời gian thuận tiện…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-cyan">Gửi đăng ký khảo sát<svg class="i"><use href="#i-arrow"/></svg></button>
+          <p class="privacy">Bằng việc gửi, bạn đồng ý để Q LIFT gọi lại tư vấn.</p>
+        </form>
+        <div class="thanks" role="status" aria-live="polite">
+          <div class="ok"><svg class="i"><use href="#i-check"/></svg></div>
+          <h3>Cảm ơn bạn đã đăng ký!</h3>
+          <p>Q LIFT sẽ liên hệ sớm để hẹn lịch khảo sát. Cần gấp, vui lòng gọi <a href="tel:0978916252" style="color:var(--navy);font-weight:700">097 891 62 52</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== 8. Footer ===== -->
+<footer class="ftr">
+  <div class="wrap">
+    <div>
+      <a href="#top" class="logo"><img src="img/logo-trang.svg" alt="Q LIFT" width="97" height="36" loading="lazy"></a>
+      <p class="pos">Thiết kế giải pháp thang máy cá nhân hoá cho riêng ngôi nhà của bạn.</p>
+      <p class="slogan" style="margin-top:14px">Thấu hiểu · Tận tâm · Chất lượng</p>
+    </div>
+    <div>
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><svg class="i"><use href="#i-phone"/></svg><a href="tel:0978916252">Hotline: 097 891 62 52</a></li>
+        <li><svg class="i"><use href="#i-pin"/></svg><span>Địa chỉ: <span class="ph-hold">(đang cập nhật)</span></span></li>
+        <li><svg class="i"><use href="#i-home"/></svg><span>Khu vực: Hà Nội &amp; miền Bắc</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kết nối</h4>
+      <ul>
+        <li><svg class="i"><use href="#i-chat"/></svg><a href="#zalo">Zalo Q LIFT <span class="ph-hold">(đang cập nhật)</span></a></li>
+        <li><svg class="i"><use href="#i-layers"/></svg><a href="#fanpage">Fanpage <span class="ph-hold">(đang cập nhật)</span></a></li>
+        <li><svg class="i"><use href="#i-arrow"/></svg><a href="#dang-ky">Đăng ký khảo sát miễn phí</a></li>
+      </ul>
+    </div>
+    <div class="copy">
+      <span>© 2026 Q LIFT · Tên pháp lý: <span class="ph-hold">(đang cập nhật)</span></span>
+      <span>Thang máy gia đình · Hà Nội &amp; miền Bắc</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Thanh nút dính đáy (điện thoại) -->
+<div class="mbar">
+  <a href="tel:0978916252" class="call"><svg class="i"><use href="#i-phone"/></svg>Gọi ngay</a>
+  <a href="#zalo" class="zalo"><svg class="i"><use href="#i-chat"/></svg>Nhắn Zalo</a>
+</div>
+
+<script>
+/* ?tinh = tắt hiệu ứng xuất hiện (dùng khi chụp ảnh kiểm tra) */
+if(!/[?&]tinh/.test(location.search))document.documentElement.classList.add('js');
+
+/* ---- Dữ liệu 18 mẫu cabin (rút gọn từ catalogue trang 04–12) ---- */
+const GROUPS={tc:'Tiêu chuẩn',hv:'Hoa văn',cc:'Cao cấp',qs:'Quan sát'};
+const CABINS=[
+ ['C01','tc','Vách vân gỗ sồi sáng xen laminate trắng mờ, led trang trí; trần inox gương.'],
+ ['C02','tc','Vách trắng mờ xen thép màu đồng, 2 vách hông vân gỗ tối; trần inox màu.'],
+ ['C03','tc','Vân gỗ tối xen laminate nâu, điểm inox gương; sàn xám đậm.'],
+ ['C04','tc','Vân gỗ sáng xen inox gương trắng; trần acrylic mờ, sàn trắng vân mây.'],
+ ['C05','tc','Vân gỗ tối xen laminate trắng sữa, led trang trí; sàn trắng vân mây.'],
+ ['C06','tc','Trắng sữa xen vân gỗ sáng, điểm đen titan xước sọc nhuyễn.'],
+ ['C07','tc','Laminate nâu xen đen titan xước sọc nhuyễn; cửa tầng màu đen.'],
+ ['C08','tc','Vân gỗ sồi sáng xen inox gương; trần vân gỗ sồi xen acrylic mờ.'],
+ ['C09','tc','Toàn bộ inox màu bạc xước sọc nhuyễn; tay vịn inox tròn.'],
+ ['C10','tc','Inox bạc xước sọc nhuyễn xen inox gương; sàn xám nhạt.'],
+ ['C11','hv','Inox bạc xước sọc nhuyễn xen inox hoa văn; cửa tầng FS-807.'],
+ ['C12','hv','Inox vàng champagne xước sọc nhuyễn xen inox gương.'],
+ ['C13','hv','Inox vàng hồng xước sọc nhuyễn xen inox gương.'],
+ ['C14','hv','Inox bạc hoa văn xen inox gương; cửa tầng hoa văn FS-803.'],
+ ['C15','cc','Inox vàng đồng xen thép đen; trần acrylic hình ngôi sao.'],
+ ['C16','cc','Inox đen xước xen laminate trắng mờ; trần ngôi sao, led chân vách.'],
+ ['C17','qs','Vách sau kính cường lực trắng bọc inox bạc xước sọc nhuyễn.'],
+ ['C18','qs','Vách sau và 2 hông kính cường lực bọc inox màu đồng.']
+];
+const grid=document.getElementById('cabins');
+grid.innerHTML=CABINS.map(([c,g,d])=>`
+  <article class="cab" data-g="${g}">
+    <div class="ph"><img src="img/cabin/${c.toLowerCase()}.jpg" alt="Mẫu cabin ${c} – dòng ${GROUPS[g]}" loading="lazy" width="579" height="1100"><span class="code">${c}</span><span class="grp">${GROUPS[g]}</span></div>
+    <div class="bd"><p>${d}</p><a class="ask" href="#dang-ky" data-c="${c}">Tư vấn mẫu này<svg class="i"><use href="#i-arrow"/></svg></a></div>
+  </article>`).join('');
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-selected','false')});
+  t.classList.add('on');t.setAttribute('aria-selected','true');
+  const f=t.dataset.f;
+  grid.querySelectorAll('.cab').forEach(c=>{
+    const show=f==='all'||c.dataset.g===f;
+    c.classList.toggle('hide',!show);
+    if(show){c.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.2,.7,.2,1)'})}
+  });
+}));
+grid.addEventListener('click',e=>{
+  const a=e.target.closest('.ask');if(!a)return;
+  const n=document.getElementById('f-note');
+  n.value='Quan tâm mẫu cabin '+a.dataset.c+'. '+n.value.replace(/^Quan tâm mẫu cabin C\d+\. /,'');
+});
+
+/* ---- Header đổi nền khi cuộn ---- */
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+/* ---- Hiệu ứng xuất hiện khi cuộn ---- */
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:.08}):null;
+document.querySelectorAll('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
+
+/* ---- Form ---- */
+const form=document.getElementById('regForm');
+const setErr=(id,bad)=>document.getElementById(id).classList.toggle('err',bad);
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const F=form.elements;
+  const name=F['name'].value.trim();
+  const phone=F['phone'].value.replace(/[\s.\-]/g,'');
+  const area=F['area'].value;
+  const type=(form.querySelector('input[name=type]:checked')||{}).value;
+  const okName=name.length>=2, okPhone=/^0\d{9}$/.test(phone), okArea=!!area, okType=!!type;
+  setErr('g-name',!okName);setErr('g-phone',!okPhone);setErr('g-area',!okArea);setErr('g-type',!okType);
+  if(!(okName&&okPhone&&okArea&&okType)){const f=form.querySelector('.err .inp, .err input');f&&f.focus();return}
+  const data={name,phone,area,type,note:F['note'].value.trim(),time:new Date().toISOString()};
+  // TODO: gửi về Google Sheet (ví dụ fetch tới Google Apps Script Web App URL với data)
+  console.log('Đăng ký khảo sát (bản thử):',data);
+  document.getElementById('formBox').classList.add('done');
+  document.getElementById('formBox').scrollIntoView({behavior:'smooth',block:'center'});
+});
+form.addEventListener('input',e=>{const g=e.target.closest('.fg');g&&g.classList.remove('err')});
+</script>
+</body>
+</html>
