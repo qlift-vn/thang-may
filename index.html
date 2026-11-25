@@ -106,7 +106,7 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 /* Cửa thang dùng chung: khung bao che, giếng tối, cabin, hai cánh inox */
 .door{position:relative;aspect-ratio:550/1058;--open:.3;--push:0}
 .door__ind{position:absolute;left:50%;top:-2.5rem;translate:-50% 0;background:#0C1116;color:var(--cyan);font:500 .82rem/1.3 var(--label);letter-spacing:.18em;padding:.25rem .7rem;border-radius:2px;box-shadow:0 1px 0 rgba(255,255,255,.08) inset}
-.door__frame{position:absolute;inset:0;padding:clamp(6px,.8vw,11px);background:var(--steel);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 0 0 1px rgba(20,32,46,.18),0 28px 60px -28px rgba(10,30,60,.55)}
+.door__frame{position:absolute;inset:0;padding:clamp(6px,.8vw,11px);background:var(--door,none) center/100% 100% no-repeat,var(--steel);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 0 0 1px rgba(20,32,46,.18),0 28px 60px -28px rgba(10,30,60,.55)}
 .door__shaft{position:relative;width:100%;height:100%;overflow:hidden;background:#090C10;isolation:isolate}
 .door__shaft::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;box-shadow:inset 0 6px 14px rgba(0,0,0,.55),inset 0 -2px 6px rgba(0,0,0,.35)}
 .plane{position:absolute;inset:0;transform-origin:50% 55%;will-change:transform}
@@ -114,7 +114,9 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 .plane--back{transform:scale(calc(1 + var(--push) * .04))}
 .plane--back img{inset:auto;left:9.818%;top:12.287%;width:80.364%;height:74.48%}
 .plane--shell{transform:scale(calc(1 + var(--push) * .13))}
-.door__leaf{position:absolute;top:0;bottom:0;width:50%;z-index:3;background:var(--steel);will-change:transform}
+/* Cánh cửa lấy đúng ảnh cửa tầng của mẫu trong catalogue: một ảnh hai cánh, mỗi cánh hiện một nửa. */
+.door__leaf{position:absolute;top:0;bottom:0;width:50%;z-index:3;background:var(--leaf,none) 0 0/200% 100% no-repeat,var(--steel);will-change:transform}
+.door__leaf--r{background-position:100% 0,0 0}
 .door__leaf--l{left:0;transform:translate3d(calc(var(--open) * -100%),0,0);box-shadow:inset -1px 0 0 rgba(0,0,0,.4),inset -8px 0 14px -10px rgba(0,0,0,.4)}
 .door__leaf--r{right:0;transform:translate3d(calc(var(--open) * 100%),0,0);box-shadow:inset 1px 0 0 rgba(255,255,255,.35),inset 8px 0 14px -10px rgba(0,0,0,.3)}
 .door__spill{position:absolute;left:-18%;right:-18%;top:100%;height:22%;pointer-events:none;opacity:calc(var(--open) * .9);background:radial-gradient(60% 100% at 50% 0%,rgba(226,186,130,.42),rgba(226,186,130,0) 70%);clip-path:polygon(22% 0,78% 0,100% 100%,0 100%)}
@@ -185,7 +187,16 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 .tone img{width:34px;height:34px;object-fit:cover;border-radius:1px;box-shadow:0 0 0 1px rgba(255,255,255,.2)}
 .tone[aria-checked="true"]{border-color:var(--cyan);background:rgba(18,163,223,.14)}
 @media (hover:hover) and (pointer:fine){.tone:hover{border-color:rgba(255,255,255,.4)}}
-.wall{position:relative;flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:9%;overflow:hidden;background-color:#D9DEE3;background-image:var(--wall-img,none);background-size:cover;background-position:center;transition:background-color 420ms var(--sc-ease-out)}
+.wall{position:relative;flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:9%;overflow:hidden;isolation:isolate;background-color:#D9DEE3;transition:background-color 520ms var(--sc-ease-out);--p:clamp(104px,10.5vw,150px)}
+.wall__tex{position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity 560ms var(--sc-ease-out);background-position:50% 0;background-repeat:repeat-x}
+.wall__tex.on{opacity:1}
+/* tấm dọc: 4 tấm/ảnh, kéo theo chiều dọc vân (không lộ), khe nối mỗi tấm */
+.wall__tex--panel{background-size:calc(var(--p) * 4) 100%}
+.wall__tex--panel::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(var(--p) - 2px),rgba(0,0,0,.26) calc(var(--p) - 2px) calc(var(--p) - 1px),rgba(255,255,255,.10) calc(var(--p) - 1px) var(--p));background-size:calc(var(--p) * 4) 100%;background-position:50% 0}
+/* đá: ghép 2x2 lật đối xứng (bookmatch), ron ngang và dọc */
+.wall__tex--slab{background-repeat:repeat;background-position:0 0;background-size:calc(var(--p) * 2.4) calc(var(--p) * 2.4 * 324 / 456)}
+.wall__tex--slab::after{content:"";position:absolute;inset:0;--sw:calc(var(--p) * 1.2);--sh:calc(var(--p) * 1.2 * 162 / 228);background:repeating-linear-gradient(90deg,transparent 0 calc(var(--sw) - 1px),rgba(0,0,0,.14) calc(var(--sw) - 1px) var(--sw)),repeating-linear-gradient(180deg,transparent 0 calc(var(--sh) - 1px),rgba(0,0,0,.14) calc(var(--sh) - 1px) var(--sh))}
+@media (prefers-reduced-motion:reduce){.wall__tex{transition:none}}
 .wall::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 50% at 50% 0%,rgba(255,248,236,.28),transparent 70%),linear-gradient(180deg,rgba(0,0,0,0) 70%,rgba(0,0,0,.18))}
 .wall__floor{position:absolute;left:0;right:0;bottom:0;height:9%;background:linear-gradient(180deg,#2A2A2C,#1A1B1E);box-shadow:0 -1px 0 rgba(255,255,255,.12)}
 .wall__mat{position:absolute;left:.8rem;top:.7rem;font:400 .72rem/1.4 var(--sc-font-text);color:#1B2633;background:rgba(255,255,255,.82);padding:.2rem .55rem;max-width:calc(100% - 1.6rem)}
@@ -264,7 +275,7 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 .kit__open{position:relative;width:100%;height:100%;overflow:hidden;background:#101216;outline:2px solid rgba(20,24,30,.45);outline-offset:0}
 .kit__open::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;box-shadow:inset 0 4px 8px rgba(0,0,0,.35),inset 3px 0 6px -2px rgba(0,0,0,.3),inset -3px 0 6px -2px rgba(0,0,0,.3)}
 .cab{position:absolute;inset:0}
-.cab__back,.cab__side{background-color:#B9B4AC;background-image:var(--mat);background-size:var(--msize,cover);background-position:center}
+.cab__back,.cab__side{background-color:#B9B4AC;background-image:var(--mat);background-size:var(--msize,cover);background-position:var(--mpos,center)}
 .cab__back{position:absolute;left:16%;right:16%;top:14%;bottom:16%}
 .cab__back::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,250,240,.22),rgba(0,0,0,.08) 70%,rgba(0,0,0,.2)),repeating-linear-gradient(90deg,transparent 0 calc(33.33% - 1px),rgba(0,0,0,.18) calc(33.33% - 1px) 33.33%)}
 .cab__side{position:absolute;inset:0}
@@ -274,7 +285,10 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 .cab__side--r::after{background:linear-gradient(270deg,rgba(0,0,0,.26),rgba(0,0,0,.08))}
 .cab__ceil{position:absolute;left:0;right:0;top:0;height:14%;clip-path:polygon(0 0,100% 0,84% 100%,16% 100%);background:#15171B}
 .cab__ceil img{width:100%;height:100%;object-fit:fill;display:block}
-.cab__floor{position:absolute;inset:0;clip-path:polygon(0 100%,16% 84%,84% 84%,100% 100%);background:linear-gradient(180deg,#8C8F94,#B8BBBF)}
+.cab__floor{position:absolute;inset:0;clip-path:polygon(0 100%,16% 84%,84% 84%,100% 100%);background:#8C8F94;perspective:420px;perspective-origin:50% 0}
+/* Sàn: tấm đá lát nằm ngang, nghiêng theo phối cảnh; viền led sát chân vách như ảnh catalogue. */
+.cab__floor::before{content:"";position:absolute;left:-40%;right:-40%;bottom:0;height:62%;transform-origin:50% 100%;transform:rotateX(74deg);background:var(--floor,none) center bottom/34% auto repeat}
+.cab__floor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,244,222,.55) 84%,rgba(0,0,0,.28) 85.5%,rgba(0,0,0,0) 92%,rgba(255,255,255,.08))}
 .cab__cop{position:absolute;left:4.5%;top:var(--copTop,36%);height:var(--copH,12%);width:auto;transform-origin:0 50%;transform:perspective(260px) rotateY(58deg);box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .kit__leaf{position:absolute;top:0;bottom:0;width:50%;z-index:3;background:#A4A9AE var(--tex) 0 0/200% 100%;transition:transform 620ms cubic-bezier(.45,.05,.2,1);will-change:transform}
 .kit__leaf--a{left:0;background-position:0 0;box-shadow:inset -1px 0 0 rgba(0,0,0,.35)}
@@ -307,6 +321,7 @@ a.text-link{color:var(--sc-accent);text-decoration:underline;text-underline-offs
 .recipe{border-top:1px solid var(--ink);padding-top:1.2rem;display:flex;flex-direction:column;gap:.9rem}
 .recipe__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:.5rem 1.2rem}
 .recipe__list li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.7rem;align-items:center;font-size:.88rem;line-height:1.45;padding:.35rem 0;border-bottom:1px solid var(--line)}
+.opt small{display:block;color:var(--sc-ink-soft);font-size:.7rem;line-height:1.4}
 .recipe__list img{width:2.4rem;height:2.4rem;object-fit:contain;background:var(--soft)}
 .recipe__list span{color:var(--sc-ink-soft);font-size:.74rem;display:block;font-family:var(--label);letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
 .recipe__act{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
@@ -442,6 +457,13 @@ textarea.inp{min-height:5.5rem;resize:vertical}
   .card__actions .btn{flex:1 1 100%}
 }
 
+/* Chuyển động: chữ và khối hiện ra chậm, quãng ngắn, dừng mềm (kiểu đóng trang tạp chí) */
+[data-sc-in],[data-sc-stagger] > *{transform:translate3d(0,20px,0);transition:opacity 900ms cubic-bezier(.22,.61,.36,1),transform 1100ms cubic-bezier(.16,1,.3,1)}
+[data-sc-in].sc-in,[data-sc-stagger] > .sc-in{transform:none}
+.room .door__leaf{transition-timing-function:cubic-bezier(.65,0,.35,1)}
+@media (max-width:899.98px){ .sc-grain{display:none} }
+@media (prefers-reduced-motion:reduce){ [data-sc-in],[data-sc-stagger] > *{transform:none;transition-duration:220ms} }
+
 /* Chống tràn ngang: mọi ảnh trong luồng co theo khung */
 .ch img{max-width:100%}
 .plane img,.piece__img img{max-width:none}
@@ -483,7 +505,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
         <p class="cover__cta"><a class="text-link" href="#dang-ky">Đăng ký khảo sát</a> miễn phí tại Hà Nội &amp; miền Bắc, hoặc gọi <a class="text-link" href="tel:0978916252">097 891 62 52</a>.</p>
       </div>
       <figure class="cover__door">
-        <div class="door" id="coverDoor">
+        <div class="door" id="coverDoor" style="--door:url(img/cua/c15.jpg);--leaf:url(img/cua/c15-la.jpg)">
           <span class="door__ind" aria-hidden="true">C15</span>
           <div class="door__frame">
             <div class="door__shaft">
@@ -495,7 +517,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
           </div>
           <div class="door__spill" aria-hidden="true"></div>
         </div>
-        <figcaption class="cap"><b>Hình bìa</b>Cabin C15, dòng Cao cấp: inox vàng đồng xen thép đen, trần acrylic hình ngôi sao.</figcaption>
+        <figcaption class="cap"><b>Hình bìa</b>Cabin C15, dòng Cao cấp: inox vàng đồng xen thép đen, trần acrylic hình ngôi sao. Cửa tầng inox màu vàng đồng xước sọc nhuyễn.</figcaption>
       </figure>
     </div>
   </div>
@@ -546,11 +568,11 @@ textarea.inp{min-height:5.5rem;resize:vertical}
   <div class="wrap tech">
     <div class="tech__media" data-sc-act="flow">
       <figure class="plate" data-sc-parallax="-0.6">
-        <div class="plate__img"><img src="img/dong-co.jpg" alt="Hai mẫu máy kéo không hộp số đồng bộ nam châm vĩnh cửu" width="760" height="260" loading="lazy"></div>
+        <div class="plate__img"><img src="img/dong-co.jpg" alt="Hai mẫu máy kéo không hộp số đồng bộ nam châm vĩnh cửu" width="760" height="260" loading="lazy" decoding="async"></div>
         <figcaption class="cap"><b>Hình 2</b>Máy kéo không hộp số, đồng bộ nam châm vĩnh cửu.</figcaption>
       </figure>
       <figure class="plate plate--narrow" data-sc-parallax="0.5">
-        <div class="plate__img"><img src="img/cua-cabin.jpg" alt="Bộ truyền động cửa cabin" width="460" height="200" loading="lazy"></div>
+        <div class="plate__img"><img src="img/cua-cabin.jpg" alt="Bộ truyền động cửa cabin" width="460" height="200" loading="lazy" decoding="async"></div>
         <figcaption class="cap"><b>Hình 3</b>Bộ truyền động cửa cabin, motor đồng bộ nam châm vĩnh cửu.</figcaption>
       </figure>
     </div>
@@ -595,8 +617,9 @@ textarea.inp{min-height:5.5rem;resize:vertical}
         <legend>Nhà bạn đang có tông vật liệu nào?</legend>
       </fieldset>
       <div class="wall" id="wall">
+        <div class="wall__tex" aria-hidden="true"></div><div class="wall__tex" aria-hidden="true"></div>
         <span class="wall__mat" id="wallMat">Tường mẫu: sơn sáng</span>
-        <div class="door is-open" id="roomDoor">
+        <div class="door is-open" id="roomDoor" style="--door:url(img/cua/c01.jpg);--leaf:url(img/cua/c01-la.jpg)">
           <span class="door__ind" id="roomInd" aria-hidden="true">C01</span>
           <div class="door__frame">
             <div class="door__shaft">
@@ -626,7 +649,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
     <header class="build__head">
       <p class="kicker">Chương III · Tự ghép</p>
       <h2 class="h2" id="buildTitle">Ghép từng chi tiết cho thang nhà bạn</h2>
-      <p class="lede">Chọn vách, trần, bảng điều khiển, cửa tầng và kiểu cửa. Cabin bên cạnh ghép lại ngay bằng ảnh chi tiết trong catalogue.</p>
+      <p class="lede">Chọn vách, trần, sàn, bảng điều khiển, cửa tầng và kiểu cửa. Cabin bên cạnh ghép lại ngay bằng ảnh chi tiết trong catalogue.</p>
     </header>
 
     <figure class="kit" id="kit" aria-labelledby="buildTitle" data-sc-verify-state="">
@@ -639,7 +662,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
                 <div class="cab__side cab__side--r" id="cabSideR"></div>
                 <div class="cab__back" id="cabBack"></div>
                 <div class="cab__ceil"><img id="cabCeil" src="img/ghep/l03.jpg" alt=""></div>
-                <div class="cab__floor"></div>
+                <div class="cab__floor" id="cabFloor"></div>
                 <img class="cab__cop" id="cabCop" src="img/ghep/h026.jpg" alt="">
               </div>
               <div class="kit__leaf kit__leaf--a" id="leafA"></div>
@@ -649,7 +672,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
         </div>
         <div class="kit__ground" aria-hidden="true"></div>
       </div>
-      <figcaption class="kit__cap">Hình ghép minh hoạ từ ảnh chi tiết trong catalogue để bạn hình dung cách phối. Sàn cabin chỉ để minh hoạ. Kỹ sư Q LIFT sẽ tư vấn phối thực tế khi khảo sát.</figcaption>
+      <figcaption class="kit__cap">Hình ghép minh hoạ từ ảnh chi tiết trong catalogue để bạn hình dung cách phối. Kỹ sư Q LIFT sẽ tư vấn phối thực tế khi khảo sát.</figcaption>
       <button class="btn btn--ghost kit__toggle" id="kitToggle" type="button" aria-pressed="false">Đóng cửa để xem cửa tầng</button>
     </figure>
 
@@ -678,19 +701,19 @@ textarea.inp{min-height:5.5rem;resize:vertical}
         <p class="body">Bảng điều khiển, trần, cửa tầng, vật liệu vách và kết cấu giếng thang, phối hợp theo phong cách ngôi nhà.</p>
       </div>
       <figure class="piece">
-        <div class="piece__img"><img src="img/bang-dieu-khien.jpg" alt="Tám mẫu bảng điều khiển cabin" width="820" height="1100" loading="lazy"></div>
+        <div class="piece__img"><img src="img/bang-dieu-khien.jpg" alt="Tám mẫu bảng điều khiển cabin" width="820" height="1100" loading="lazy" decoding="async"></div>
         <figcaption><h3 class="h3">Bảng điều khiển</h3><p class="cap">8 mẫu: H001A, H008, H011, H012, H013, H019, H025, H026. Đặt âm vào đố cabin hoặc vách hông.</p></figcaption>
       </figure>
       <figure class="piece">
-        <div class="piece__img"><img src="img/tran-cabin.jpg" alt="Các mẫu trần cabin L01 đến L08" width="860" height="1000" loading="lazy"></div>
+        <div class="piece__img"><img src="img/tran-cabin.jpg" alt="Các mẫu trần cabin L01 đến L08" width="860" height="1000" loading="lazy" decoding="async"></div>
         <figcaption><h3 class="h3">Trần cabin</h3><p class="cap">L01–L08. Khung hợp kim nhôm, tấm acrylic mờ, inox, đèn led trang trí; có mẫu trần hình ngôi sao.</p></figcaption>
       </figure>
       <figure class="piece">
-        <div class="piece__img"><img src="img/cua-tang.jpg" alt="Các mẫu cửa tầng" width="720" height="1150" loading="lazy"></div>
+        <div class="piece__img"><img src="img/cua-tang.jpg" alt="Các mẫu cửa tầng" width="720" height="1150" loading="lazy" decoding="async"></div>
         <figcaption><h3 class="h3">Cửa tầng</h3><p class="cap">12 lựa chọn: thép vân gỗ, inox xước sọc nhuyễn, inox gương vàng, đồng, thép hoa văn FS-803, FS-807, FS-809.</p></figcaption>
       </figure>
       <figure class="piece">
-        <div class="piece__img"><img src="img/vat-lieu.jpg" alt="Bảng 18 vật liệu trần và vách cabin" width="720" height="1110" loading="lazy"></div>
+        <div class="piece__img"><img src="img/vat-lieu.jpg" alt="Bảng 18 vật liệu trần và vách cabin" width="720" height="1110" loading="lazy" decoding="async"></div>
         <figcaption><h3 class="h3">Vật liệu trần và vách</h3><p class="cap">18 mẫu: thép vân gỗ, inox gương, inox vàng champagne, đồng, đen titan, inox hoa văn và màu sàn.</p></figcaption>
       </figure>
       <figure class="piece piece--type">
@@ -705,7 +728,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
         <figcaption><h3 class="h3">Loại cửa và khung cửa</h3><p class="cap">Chọn theo lối đi và phong cách sảnh tầng.</p></figcaption>
       </figure>
       <figure class="piece">
-        <div class="piece__img"><img src="img/khung-thep.jpg" alt="Kết cấu khung thép hố thang" width="320" height="1130" loading="lazy"></div>
+        <div class="piece__img"><img src="img/khung-thep.jpg" alt="Kết cấu khung thép hố thang" width="320" height="1130" loading="lazy" decoding="async"></div>
         <figcaption><h3 class="h3">Khung thép hố thang</h3><p class="cap">Tuỳ chỉnh theo nhu cầu, uốn tấm thép, lắp ráp tại chỗ. Màu tiêu chuẩn RAL7031, xám Xingfa.</p></figcaption>
       </figure>
       <p class="rail__note">Kích thước cabin, cửa và giếng thang theo từng tải trọng có trong catalogue. Bảng tóm tắt ở ngay dưới.</p>
@@ -776,7 +799,7 @@ textarea.inp{min-height:5.5rem;resize:vertical}
   <div class="wrap">
     <div class="colo">
       <div class="colo__text">
-        <img class="colo__logo" src="img/logo-trang.svg" alt="Q LIFT" width="120" height="45" loading="lazy">
+        <img class="colo__logo" src="img/logo-trang.svg" alt="Q LIFT" width="120" height="45" loading="lazy" decoding="async">
         <p class="kicker">Thấu hiểu – Tận tâm – Chất lượng</p>
         <h2 class="h2">Phiếu đăng ký khảo sát</h2>
         <p class="colo__run">Điền phiếu đăng ký để Q LIFT gọi lại, hoặc gọi ngay <a href="tel:0978916252">097 891 62 52</a>. Q LIFT khảo sát và tư vấn miễn phí tận công trình tại Hà Nội &amp; miền Bắc.</p>
@@ -884,13 +907,13 @@ var CABINS = [
 ];
 /* Tông vật liệu: ảnh mẫu cắt từ bảng vật liệu catalogue; "hợp tông" = mô tả mẫu có chữ vật liệu đó. */
 var TONES = [
- {id:'go-sang', name:'Gỗ sáng', img:'img/vl/go-sang.jpg', mat:'PCY255 · thép vân gỗ sồi màu sáng', bg:'#81776E', re:/vân gỗ (sồi )?sáng/i, say:'có vân gỗ sáng'},
- {id:'go-toi', name:'Gỗ tối', img:'img/vl/go-toi.jpg', mat:'D28 · thép vân gỗ màu tối', bg:'#655B51', re:/vân gỗ tối|laminate nâu/i, say:'có vân gỗ tối hoặc laminate nâu'},
- {id:'trang', name:'Trắng', img:'img/vl/trang-mo.jpg', mat:'HK02 · thép trắng mờ', bg:'#EDEDED', re:/trắng/i, say:'có chi tiết trắng'},
- {id:'bac', name:'Inox bạc', img:'img/vl/inox-xuoc.jpg', mat:'Inox xước sọc nhuyễn', bg:'#A7A7A7', re:/bạc/i, say:'dùng inox bạc'},
- {id:'vang', name:'Vàng, đồng', img:'img/vl/vang-champagne.jpg', mat:'Inox màu vàng champagne xước sọc nhuyễn', bg:'#A79772', re:/vàng|đồng/i, say:'có tông vàng hoặc đồng'},
- {id:'den', name:'Đen titan', img:'img/vl/den-titan.jpg', mat:'Inox màu đen titan xước sọc nhuyễn', bg:'#4E4E4E', re:/đen/i, say:'có chi tiết đen'},
- {id:'kinh', name:'Kính, đá sáng', img:'img/vl/trang.jpg', mat:'Màu trắng vân đá', bg:'#F4F4F4', re:/kính/i, say:'là cabin kính quan sát'}
+ {id:'go-sang', wall:'img/tuong/go-sang.jpg', kind:'panel', name:'Gỗ sáng', img:'img/vl-2x/go-sang.jpg', mat:'PCY255 · thép vân gỗ sồi màu sáng', bg:'#81776E', re:/vân gỗ (sồi )?sáng/i, say:'có vân gỗ sáng'},
+ {id:'go-toi', wall:'img/tuong/go-toi.jpg', kind:'panel', name:'Gỗ tối', img:'img/vl-2x/go-toi.jpg', mat:'D28 · thép vân gỗ màu tối', bg:'#655B51', re:/vân gỗ tối|laminate nâu/i, say:'có vân gỗ tối hoặc laminate nâu'},
+ {id:'trang', wall:'img/tuong/trang-mo.jpg', kind:'panel', name:'Trắng', img:'img/vl-2x/trang-mo.jpg', mat:'HK02 · thép trắng mờ', bg:'#EDEDED', re:/trắng/i, say:'có chi tiết trắng'},
+ {id:'bac', wall:'img/tuong/inox-xuoc.jpg', kind:'panel', name:'Inox bạc', img:'img/vl-2x/inox-xuoc.jpg', mat:'Inox xước sọc nhuyễn', bg:'#A7A7A7', re:/bạc/i, say:'dùng inox bạc'},
+ {id:'vang', wall:'img/tuong/vang-champagne.jpg', kind:'panel', name:'Vàng, đồng', img:'img/vl-2x/vang-champagne.jpg', mat:'Inox màu vàng champagne xước sọc nhuyễn', bg:'#A79772', re:/vàng|đồng/i, say:'có tông vàng hoặc đồng'},
+ {id:'den', wall:'img/tuong/den-titan.jpg', kind:'panel', name:'Đen titan', img:'img/vl-2x/den-titan.jpg', mat:'Inox màu đen titan xước sọc nhuyễn', bg:'#4E4E4E', re:/đen/i, say:'có chi tiết đen'},
+ {id:'kinh', wall:'img/tuong/trang.jpg', kind:'slab', name:'Kính, đá sáng', img:'img/vl-2x/trang.jpg', mat:'Màu trắng vân đá', bg:'#F4F4F4', re:/kính/i, say:'là cabin kính quan sát'}
 ];
 
 var state = { tone:null, active:0, kept:null, type:null };
@@ -906,7 +929,7 @@ for (i = 0; i < CABINS.length; i++) {
     html += '<div class="bgroup"><h3 class="book__group">' + GROUPS[g] + ' · ' + GROUP_RANGE[g] + '</h3><ol class="entries">';
   }
   html += '<li class="entry" data-i="' + i + '" id="mau-' + c[0].toLowerCase() + '"><button class="entry__btn" type="button" aria-label="Xem cabin ' + c[0] + ', ' + GROUPS[c[1]] + ': ' + c[2] + '">' +
-    '<img src="img/cabin/' + c[0].toLowerCase() + '.jpg" alt="" width="550" height="1058" loading="lazy">' +
+    '<img src="img/cabin/' + c[0].toLowerCase() + '.jpg" alt="" width="550" height="1058" loading="lazy" decoding="async">' +
     '<span class="entry__code">' + c[0] + '</span><span class="entry__hit" aria-hidden="true"></span></button></li>';
 }
 html += '</ol></div><p class="book__end">Chấm xanh dưới mã là mẫu hợp tông nhà bạn. Mẫu nào ưng, bấm "Giữ mẫu này": mã cabin được ghi sẵn vào phiếu đăng ký cuối trang.</p>';
@@ -918,18 +941,31 @@ var tonesBox = $('tones');
 TONES.forEach(function(t){
   var b = document.createElement('button');
   b.type = 'button'; b.className = 'tone'; b.setAttribute('role','radio'); b.setAttribute('aria-checked','false'); b.dataset.tone = t.id;
-  b.innerHTML = '<img src="' + t.img + '" alt="" width="152" height="108">' + t.name;
+  b.innerHTML = '<img src="' + t.img + '" alt="" width="228" height="162">' + t.name;
   b.addEventListener('click', function(){ setTone(state.tone === t.id ? null : t.id); });
   tonesBox.appendChild(b);
 });
 
+/* Tường ốp tấm: vân vật liệu ở đúng độ phân giải gốc, lật đối xứng từng tấm, có khe nối. Đổi tông thì lớp mới hiện mờ dần lên lớp cũ. */
+var wallLayers = [].slice.call(document.querySelectorAll('#wall .wall__tex')), wallFront = 0;
+function paintWall(t){
+  var wall = $('wall');
+  wall.style.backgroundColor = t ? t.bg : '';
+  var next = wallLayers[1 - wallFront], cur = wallLayers[wallFront];
+  if (!t) { cur.classList.remove('on'); next.classList.remove('on'); return; }
+  next.className = 'wall__tex wall__tex--' + t.kind;
+  next.style.backgroundImage = 'url("' + t.wall + '")';
+  var show = function(){ requestAnimationFrame(function(){ next.classList.add('on'); cur.classList.remove('on'); wallFront = 1 - wallFront; }); };
+  var im = new Image(); im.src = t.wall;
+  if (im.decode) im.decode().then(show, show); else show();
+}
 function setTone(id){
   state.tone = id;
   var t = TONES.filter(function(x){ return x.id === id; })[0] || null;
   [].forEach.call(tonesBox.querySelectorAll('.tone'), function(b){ b.setAttribute('aria-checked', String(b.dataset.tone === id)); b.tabIndex = (b.dataset.tone === id || (!id && b === tonesBox.querySelector('.tone'))) ? 0 : -1; });
   var wall = $('wall');
-  if (t) { wall.style.setProperty('--wall-img', 'url("' + t.img + '")'); wall.style.backgroundColor = t.bg; $('wallMat').textContent = 'Tường mẫu: ' + t.mat; }
-  else { wall.style.removeProperty('--wall-img'); wall.style.backgroundColor = ''; $('wallMat').textContent = 'Tường mẫu: sơn sáng'; }
+  paintWall(t);
+  $('wallMat').textContent = t ? 'Tường mẫu: ' + t.mat : 'Tường mẫu: sơn sáng';
   var hits = [];
   entries.forEach(function(e, k){ var m = !!(t && t.re.test(CABINS[k][2])); e.classList.toggle('is-match', m); if (m) hits.push(k); });
   book.classList.toggle('has-tone', !!t);
@@ -954,7 +990,17 @@ tonesBox.addEventListener('keydown', function(e){
 /* ---------- Cửa thang: đóng lại, đổi cabin, mở ra ---------- */
 var door = $('roomDoor'), img = $('roomImg'), shown = 0, want = 0, busy = false;
 var preload = {};
-function load(k){ if (!preload[k]) { preload[k] = new Image(); preload[k].src = 'img/cabin/' + CABINS[k][0].toLowerCase() + '.jpg'; } return preload[k]; }
+function load(k){
+  if (!preload[k]) {
+    var id = CABINS[k][0].toLowerCase();
+    preload[k] = new Image(); preload[k].src = 'img/cabin/' + id + '.jpg';
+    preload[k].leaf = new Image(); preload[k].leaf.src = 'img/cua/' + id + '-la.jpg';
+    preload[k].frame = new Image(); preload[k].frame.src = 'img/cua/' + id + '.jpg';
+  }
+  return preload[k];
+}
+/* Đổi cả cửa tầng theo mẫu: mỗi cabin trong catalogue đi kèm một mẫu cửa riêng. */
+function paintDoor(k){ var id = CABINS[k][0].toLowerCase(); door.style.setProperty('--door', 'url(img/cua/' + id + '.jpg)'); door.style.setProperty('--leaf', 'url(img/cua/' + id + '-la.jpg)'); }
 function paintLabel(k){
   var c = CABINS[k];
   $('roomCode').innerHTML = c[0] + '<small>' + GROUPS[c[1]] + '</small>';
@@ -967,16 +1013,18 @@ function paintLabel(k){
 function swap(){
   if (busy || want === shown) return;
   busy = true; load(want);
-  if (reduce) { img.src = preload[want].src; shown = want; paintLabel(want); busy = false; syncVerify(); return; }
+  if (reduce) { img.src = preload[want].src; paintDoor(want); shown = want; paintLabel(want); busy = false; syncVerify(); return; }
   door.classList.add('is-shut'); syncVerify();
   setTimeout(function(){
     var target = want; load(target);
     var go = function(){
-      img.src = preload[target].src; shown = target; paintLabel(target);
+      img.src = preload[target].src; paintDoor(target); shown = target; paintLabel(target);
       requestAnimationFrame(function(){ door.classList.remove('is-shut'); syncVerify(); });
       setTimeout(function(){ busy = false; swap(); }, 380);
     };
-    if (preload[target].complete) go(); else { preload[target].onload = go; preload[target].onerror = go; }
+    var pi = preload[target], dec = function(i){ return i.decode ? i.decode().catch(function(){}) : Promise.resolve(); },
+        ready = function(){ Promise.all([dec(pi), dec(pi.leaf), dec(pi.frame)]).then(go, go); };
+    if (pi.complete) ready(); else { pi.onload = ready; pi.onerror = go; }
   }, 270);
 }
 function setActive(k){
@@ -1049,7 +1097,7 @@ var VL = [
  ['dong','','Inox màu đồng xước sọc nhuyễn'], ['vang-xuoc','','Inox màu vàng xước sọc nhuyễn'], ['den-titan','','Inox màu đen titan xước sọc nhuyễn'],
  ['fs803','FS-803','Inox hoa văn'], ['fs807','FS-807','Inox hoa văn'], ['fs809','FS-809','Inox hoa văn'],
  ['xam-dam','','Màu xám đậm'], ['xam-nhat','','Màu xám nhạt'], ['trang','','Màu trắng']
-].map(function(v){ return { id:v[0], code:v[1], name:v[2], img:'img/vl/' + v[0] + '.jpg', label:(v[1] ? v[1] + ' · ' : '') + v[2] }; });
+].map(function(v){ return { id:v[0], code:v[1], name:v[2], img:'img/vl-2x/' + v[0] + '.jpg', label:(v[1] ? v[1] + ' · ' : '') + v[2] }; });
 var CEIL = ['L01','L02','L03','L04','L05','L06','L07','L08'].map(function(c){ return { id:c, code:c, name:'Trần ' + c, img:'img/ghep/' + c.toLowerCase() + '.jpg', label:'Trần ' + c }; });
 var COP = [['H001A',1040],['H008',324],['H011',660],['H012',660],['H013',168],['H019',136],['H025',330],['H026',188]].map(function(c){
   return { id:c[0], code:c[0], name:'Bảng điều khiển ' + c[0], img:'img/ghep/' + c[0].toLowerCase() + '.jpg', label:'Bảng điều khiển ' + c[0], h:c[1] }; });
@@ -1057,27 +1105,42 @@ var CT = ['Tấm thép vân gỗ sồi màu sáng','Tấm thép vân gỗ màu t
  'Inox màu đồng xước sọc nhuyễn','Inox màu vàng champagne xước sọc nhuyễn','Inox gương vàng','Inox gương đồng',
  'Inox màu đen xước sọc nhuyễn','FS-803 Tấm thép hoa văn','FS-807 Tấm thép hoa văn','FS-809 Tấm thép hoa văn'].map(function(n, k){
   var id = 'ct' + (k < 9 ? '0' : '') + (k + 1); return { id:id, code:'', name:n, img:'img/ghep/' + id + '.jpg', label:'Cửa tầng ' + n.charAt(0).toLowerCase() + n.slice(1) }; });
+/* Sàn cabin: 3 màu, lấy theo dòng "Sàn cabin" của 18 mẫu C01–C18 (catalogue trang 04–12), ảnh vân ở trang 13. */
+var SAN = [
+ ['trang','Màu trắng vân mây','C01, C02, C04, C05, C15, C16'],
+ ['xam-dam','Màu xám đậm','C03, C06, C07, C08, C11, C13, C14'],
+ ['xam-nhat','Màu xám nhạt','C09, C10, C12, C17, C18']
+].map(function(v){ return { id:v[0], code:'', name:v[1], note:'Dùng ở ' + v[2], img:'img/vl-2x/' + v[0] + '.jpg', tex:'img/vl-2x/' + v[0] + '-tam.jpg', label:'Sàn ' + v[1].charAt(0).toLowerCase() + v[1].slice(1) }; });
 var DTYPE = [{id:'tt', name:'Cửa mở trung tâm', label:'Cửa mở trung tâm'}, {id:'lua', name:'Cửa mở lùa 1 phía', label:'Cửa mở lùa 1 phía'}];
 var BAO = [{id:'hep', name:'Bao che bản hẹp', label:'Bao che bản hẹp'}, {id:'rong', name:'Bao che bản rộng', label:'Bao che bản rộng'}];
 var PARTS = [
  {key:'back', tab:'Vách sau', sub:'18 vật liệu', groups:[{t:'Vật liệu vách sau cabin', list:VL, kind:'fill'}]},
  {key:'side', tab:'Vách hông', sub:'18 vật liệu', groups:[{t:'Vật liệu hai vách hông', list:VL, kind:'fill'}]},
  {key:'ceil', tab:'Trần', sub:'L01–L08', groups:[{t:'Trần cabin', list:CEIL, kind:'fit'}]},
+ {key:'floor', tab:'Sàn', sub:'3 màu', groups:[{t:'Sàn cabin', list:SAN, kind:'fill'}]},
  {key:'cop', tab:'Bảng điều khiển', sub:'8 mẫu', groups:[{t:'Bảng điều khiển cabin', list:COP, kind:'tall'}]},
  {key:'door', tab:'Cửa tầng', sub:'12 lựa chọn', groups:[{t:'Vật liệu cửa tầng', list:CT, kind:'tall'}]},
  {key:'type', tab:'Kiểu cửa', sub:'Mở và bao che', groups:[{t:'Loại cửa', list:DTYPE, kind:'word', key:'type'}, {t:'Khung bao che', list:BAO, kind:'word', key:'bao'}]}
 ];
-var LISTS = { back:VL, side:VL, ceil:CEIL, cop:COP, door:CT, type:DTYPE, bao:BAO };
-var NAMES = { back:'Vách sau', side:'Vách hông', ceil:'Trần', cop:'Bảng điều khiển', door:'Cửa tầng', type:'Loại cửa', bao:'Bao che' };
-var kit = { back:'go-sang', side:'trang-mo', ceil:'L03', cop:'H026', door:'ct04', type:'tt', bao:'hep' };
+var LISTS = { back:VL, side:VL, ceil:CEIL, floor:SAN, cop:COP, door:CT, type:DTYPE, bao:BAO };
+var NAMES = { back:'Vách sau', side:'Vách hông', ceil:'Trần', floor:'Sàn', cop:'Bảng điều khiển', door:'Cửa tầng', type:'Loại cửa', bao:'Bao che' };
+var kit = { back:'go-sang', side:'trang-mo', ceil:'L03', floor:'trang', cop:'H026', door:'ct04', type:'tt', bao:'hep' };
 var kitOpen = true, curTab = 0;
 function item(key, id){ return LISTS[key].filter(function(x){ return x.id === id; })[0]; }
-function mats(el, v){ el.style.setProperty('--mat', 'url("' + v.img + '")'); el.style.setProperty('--msize', /^fs/.test(v.id) ? '34% auto' : 'cover'); }
+/* Vách cabin: mỗi tấm ốp một mẫu (khớp 3 khe nối), chỉ giãn theo chiều dọc vân nên không mờ; đá ghép tấm lật gương; hoa văn lát theo ô. */
+function mats(el, v){
+  var stone = /^(xam-dam|xam-nhat|trang)$/.test(v.id), fs = /^fs/.test(v.id);
+  el.style.setProperty('--mat', 'url("' + (stone ? v.img.replace('.jpg', '-tam.jpg') : v.img) + '")');
+  /* Đá: ảnh gốc catalogue chỉ rộng 228px, nên mỗi tấm vách ốp một tấm đá ở đúng cỡ đó (lật gương nối tiếp), không phóng to cả vách. */
+  el.style.setProperty('--msize', fs ? '34% auto' : stone ? '66.67% auto' : '33.34% 100%');
+  el.style.setProperty('--mpos', fs ? 'center top' : '0 0');
+}
 
 function paintKit(){
   mats($('cabBack'), item('back', kit.back));
   mats($('cabSideL'), item('side', kit.side)); mats($('cabSideR'), item('side', kit.side));
   $('cabCeil').src = item('ceil', kit.ceil).img;
+  $('cabFloor').style.setProperty('--floor', 'url("' + item('floor', kit.floor).tex + '")');
   var c = item('cop', kit.cop), cop = $('cabCop'), full = c.h > 900;
   cop.src = c.img; cop.style.setProperty('--copH', (c.h / 1040 * 58).toFixed(1) + '%'); cop.style.setProperty('--copTop', full ? '22%' : (c.h > 500 ? '30%' : '38%'));
   var d = $('kitDoor');
@@ -1087,17 +1150,17 @@ function paintKit(){
   $('kitToggle').textContent = kitOpen ? 'Đóng cửa để xem cửa tầng' : 'Mở cửa xem trong cabin';
   $('kitToggle').setAttribute('aria-pressed', String(!kitOpen));
   var ul = $('recipe'); ul.innerHTML = '';
-  ['back','side','ceil','cop','door','type','bao'].forEach(function(k){
+  ['back','side','ceil','floor','cop','door','type','bao'].forEach(function(k){
     var v = item(k, kit[k]), li = document.createElement('li');
     li.innerHTML = (v.img ? '<img src="' + v.img + '" alt="" width="40" height="40">' : '<i aria-hidden="true"></i>') + '<p style="margin:0"><span>' + NAMES[k] + '</span>' + v.label + '</p>';
     ul.appendChild(li);
   });
-  $('kit').setAttribute('data-sc-verify-state', [kit.back, kit.side, kit.ceil, kit.cop, kit.door, kit.type, kit.bao, kitOpen ? 'mo' : 'dong'].join('|'));
+  $('kit').setAttribute('data-sc-verify-state', [kit.back, kit.side, kit.ceil, kit.floor, kit.cop, kit.door, kit.type, kit.bao, kitOpen ? 'mo' : 'dong'].join('|'));
 }
 function optHTML(v, kind){
-  var pic = v.img ? '<span class="opt__img' + (kind === 'fill' ? ' opt__img--fill' : '') + '"><img src="' + v.img + '" alt="" loading="lazy"></span>' : '';
+  var pic = v.img ? '<span class="opt__img' + (kind === 'fill' ? ' opt__img--fill' : '') + '"><img src="' + v.img + '" alt="" loading="lazy" decoding="async"></span>' : '';
   if (kind === 'word') return v.name;
-  if (kind === 'fill') return pic + (v.code ? '<b>' + v.code + '</b>' : '') + v.name;
+  if (kind === 'fill') return pic + (v.code ? '<b>' + v.code + '</b>' : '') + v.name + (v.note ? '<small>' + v.note + '</small>' : '');
   return pic + (v.code ? '<b>' + v.code + '</b>' : v.name);
 }
 function renderPanel(){
@@ -1146,7 +1209,7 @@ tabsBox.addEventListener('keydown', function(e){
   selectTab(k); tabsBox.children[k].focus();
 });
 $('kitToggle').addEventListener('click', function(){ kitOpen = !kitOpen; paintKit(); });
-function kitText(){ return ['back','side','ceil','cop','door','type','bao'].map(function(k){ return NAMES[k] + ': ' + item(k, kit[k]).label.replace(/^(Trần|Bảng điều khiển|Cửa tầng) /, ''); }).join('; '); }
+function kitText(){ return ['back','side','ceil','floor','cop','door','type','bao'].map(function(k){ return NAMES[k] + ': ' + item(k, kit[k]).label.replace(/^(Trần|Sàn|Bảng điều khiển|Cửa tầng) /, ''); }).join('; '); }
 $('sendKit').addEventListener('click', function(){
   var note = $('f-note'), clean = note.value.replace(/\s*Cấu hình tự ghép: [^\n]*\.?/, '').trim();
   note.value = (clean ? clean + '\n' : '') + 'Cấu hình tự ghép: ' + kitText() + '.';
@@ -1168,10 +1231,26 @@ picks.forEach(function(p){
 /* ---------- Bìa: các lớp chạy với tốc độ khác nhau ---------- */
 var coverDoor = $('coverDoor'), coverStage = $('coverStage'), cap = coverDoor.parentNode.querySelector('figcaption');
 function sm(t){ t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
+/* Cửa bìa đi theo cuộn có quán tính: mục tiêu lấy từ vị trí cuộn, giá trị vẽ đuổi theo mục tiêu mỗi khung.
+   Bánh xe chuột nhảy từng nấc 100px thì cửa vẫn trượt liền, không giật cục. */
+var coverTop = 0, coverRun = 1, coverCur = -1, coverAim = 0, coverLoop = 0;
+function coverMeasure(){ coverTop = cover.offsetTop; coverRun = cover.offsetHeight - innerHeight; }
+function coverAimAt(){ return coverRun > 1 ? Math.max(0, Math.min(1, (scrollY - coverTop) / coverRun)) : 0; }
+function coverTick(){
+  coverLoop = 0;
+  var d = coverAim - coverCur;
+  coverCur = Math.abs(d) < 0.0008 ? coverAim : coverCur + d * (innerWidth < 900 ? 0.2 : 0.12);
+  coverPaint(coverCur);
+  if (coverCur !== coverAim) coverLoop = requestAnimationFrame(coverTick);
+}
 function coverUpdate(){
-  var p;
-  if (reduce) p = 0.6;
-  else { var top = cover.offsetTop, h = cover.offsetHeight - innerHeight; p = h > 1 ? Math.max(0, Math.min(1, (scrollY - top) / h)) : 0; }
+  if (reduce) { coverPaint(0.6); return; }
+  coverAim = coverAimAt();
+  if (coverCur < 0) coverCur = coverAim;
+  if (!coverLoop && coverCur !== coverAim) coverLoop = requestAnimationFrame(coverTick);
+  else if (coverCur === coverAim) coverPaint(coverCur);
+}
+function coverPaint(p){
   var open = 0.3 + 0.7 * sm(p / 0.6), push = sm(p), capv = sm((p - 0.55) / 0.25);
   coverDoor.style.setProperty('--open', open.toFixed(4));
   coverDoor.style.setProperty('--push', push.toFixed(4));
@@ -1182,18 +1261,19 @@ function coverUpdate(){
 /* ---------- Folio: chương đang đọc + mặt đất dưới folio ---------- */
 var folio = $('folio'), chapters = [].slice.call(document.querySelectorAll('[data-folio]'));
 var folioBtn = $('folioBtn'), idx = $('mucLuc');
+var chapBox = [];
+function folioMeasure(){ chapBox = chapters.map(function(c){ var r = c.getBoundingClientRect(); return [r.top + scrollY, r.bottom + scrollY]; }); }
 function folioUpdate(){
-  var probe = innerHeight * 0.4, cur = chapters[0];
-  var groundAt = innerWidth < 1100 ? innerHeight - 26 : innerHeight - 60, ground = 'light';
+  var y = scrollY, probe = y + innerHeight * 0.4, cur = chapters[0];
+  var groundAt = y + (innerWidth < 1100 ? innerHeight - 26 : innerHeight - 60), ground = 'light';
   for (var j = 0; j < chapters.length; j++) {
-    var r = chapters[j].getBoundingClientRect();
-    if (r.top <= probe) cur = chapters[j];
-    if (r.top <= groundAt && r.bottom > groundAt) ground = chapters[j].getAttribute('data-ground');
+    if (chapBox[j][0] <= probe) cur = chapters[j];
+    if (chapBox[j][0] <= groundAt && chapBox[j][1] > groundAt) ground = chapters[j].getAttribute('data-ground');
   }
   var parts = cur.getAttribute('data-folio').split('|');
   if ($('folioNum').textContent !== parts[0] || $('folioTitle').textContent !== parts[1]) { $('folioNum').textContent = parts[0]; $('folioTitle').textContent = parts[1]; }
   folio.setAttribute('data-ground', ground);
-  folio.classList.toggle('is-cover', cur === cover && scrollY < cover.offsetTop + cover.offsetHeight - innerHeight * 1.05);
+  folio.classList.toggle('is-cover', cur === cover && y < coverTop + coverRun + innerHeight - innerHeight * 1.05);
 }
 folioBtn.addEventListener('click', function(){ var o = idx.hidden; idx.hidden = !o; folioBtn.setAttribute('aria-expanded', String(o)); if (o) idx.querySelector('a').focus(); });
 idx.addEventListener('click', function(e){ if (e.target.closest('a')) { idx.hidden = true; folioBtn.setAttribute('aria-expanded','false'); } });
@@ -1206,9 +1286,13 @@ setTone(null);
 syncVerify();
 
 var ticking = false;
-function frame(){ ticking = false; coverUpdate(); folioUpdate(); }
+function frame(){ ticking = false; folioUpdate(); coverUpdate(); }
+function measure(){ coverMeasure(); folioMeasure(); }
 addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive:true });
-addEventListener('resize', function(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } });
+addEventListener('resize', function(){ measure(); if (!ticking) { ticking = true; requestAnimationFrame(frame); } });
+/* Ảnh, phông chữ, phiếu mở rộng... làm đổi chiều cao trang: đo lại khi thân trang đổi cỡ */
+if (window.ResizeObserver) new ResizeObserver(function(){ measure(); if (!ticking) { ticking = true; requestAnimationFrame(frame); } }).observe(document.body);
+measure();
 
 /* ---------- Phiếu đăng ký ---------- */
 var form = $('regForm');
